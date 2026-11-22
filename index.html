@@ -201,7 +201,6 @@
       gap: 12px;
     }
     .page-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: #ffffff; }
-    .page-sub { font-size: 13px; color: #cbd5e1; margin-top: 3px; }
 
     .month-picker-wrap {
       display: inline-flex;
@@ -956,10 +955,7 @@
     <!-- Header -->
     <header class="card top-header">
       <div class="header-top">
-        <div>
-          <h1 class="page-title">Ringkasan Keuangan Pribadi</h1>
-          <p class="page-sub">8 Rekening &amp; Aset, Kartu Kredit BCA (Limit <span id="header-cc-limit">Rp 5.000.000</span>), &amp; Cicilan SPinjam MacBook Air M1</p>
-        </div>
+        <h1 class="page-title">Ringkasan Keuangan Pribadi</h1>
         <div class="month-picker-wrap">
           <span style="font-size:12px; color:var(--text-muted); font-weight:600;">Periode:</span>
           <input type="month" id="filter-month" />
@@ -988,7 +984,7 @@
               <span class="badge badge-emerald">Tracker Hari Ini</span>
               <span id="strip-full-date" style="font-size:12.5px; color:#cbd5e1; font-weight:600;">-</span>
             </div>
-            <p style="font-size:12px; color:#94a3b8; margin-top:4px;">Otomatis reset tiap ganti tanggal &bull; Sisa <strong id="strip-days-left" style="color:#ffffff;">0 hari</strong> di bulan ini</p>
+            <p style="font-size:12px; color:#94a3b8; margin-top:4px;">Sisa <strong id="strip-days-left" style="color:#ffffff;">0 hari</strong> di bulan ini</p>
           </div>
         </div>
 
@@ -1002,7 +998,7 @@
             <div id="strip-today-food" style="font-size:15px; font-weight:800; color:#fcd34d; margin-top:2px;">Rp 0</div>
           </div>
           <div>
-            <div style="font-size:10px; color:#6ee7b7; text-transform:uppercase; font-weight:700;">Jatah Aman / Hari (BNI)</div>
+            <div style="font-size:10px; color:#6ee7b7; text-transform:uppercase; font-weight:700;">Limit Harian</div>
             <div id="strip-safe-daily" style="font-size:15px; font-weight:800; color:#34d399; margin-top:2px;">Rp 0</div>
           </div>
         </div>
@@ -1126,10 +1122,7 @@
       <div class="grid-3-asym">
         <div class="card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; gap:10px;">
-            <div>
-              <h3 style="font-size:16px; font-weight:800;">Realisasi Anggaran Bulanan</h3>
-              <p id="dash-budget-subtitle" style="font-size:12px; color:var(--text-muted);">Acuan anggaran hanya dari pemasukan Gaji (pemasukan Lain-Lain hanya masuk arus kas &amp; saldo).</p>
-            </div>
+            <h3 style="font-size:16px; font-weight:800;">Realisasi Anggaran Bulanan</h3>
             <button type="button" class="btn btn-sm btn-ghost" data-action="switch-tab" data-tab="budget">Edit Target</button>
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(145px, 1fr)); gap:8px; background:var(--bg-subtle); padding:10px 12px; border-radius:11px; border:1px solid var(--border-color); margin-bottom:14px;" class="tabular">
@@ -1149,38 +1142,26 @@
           <div id="dash-budget-list" style="display:flex; flex-direction:column; gap:14px;"></div>
         </div>
 
-        <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
-          <div>
-            <h3 style="font-size:16px; font-weight:800;">Diagram Lingkaran Anggaran</h3>
-            <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Proporsi pengeluaran per kategori bulan terpilih</p>
-          </div>
-          <div id="pie-expense-box" class="pie-wrapper"></div>
-          <div style="font-size:11.5px; color:var(--text-muted); background:var(--bg-subtle); padding:10px 12px; border-radius:10px; margin-top:12px;">
-            <strong>Catatan BNI (Rp 1,5 Jt):</strong> Bensin terbantu voucher &amp; tunjangan motor kantor, sisa saldo BNI menjadi surplus bulananmu.
-          </div>
+        <div class="card" style="display:flex; flex-direction:column; gap:14px;">
+          <h3 style="font-size:16px; font-weight:800;">Diagram Lingkaran Anggaran</h3>
+          <div id="pie-expense-box" class="pie-wrapper" style="flex:1; justify-content:center;"></div>
         </div>
       </div>
 
       <!-- Asset Allocation Pie + 8 Accounts -->
       <div class="grid-3-asym">
         <div class="card" style="order:2;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <div>
-              <h3 style="font-size:16px; font-weight:800;">8 Sumber Keuangan &amp; Aset</h3>
-              <p style="font-size:12px; color:var(--text-muted);">Rekening operasional, kas/uang elektronik, tabungan emas &amp; investasi</p>
-            </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px;">
+            <h3 style="font-size:16px; font-weight:800;">8 Sumber Keuangan &amp; Aset</h3>
             <button type="button" class="btn btn-sm btn-ghost" data-action="switch-tab" data-tab="akun">Detail</button>
           </div>
           <div id="dash-accounts-grid" class="grid-accounts tabular"></div>
         </div>
 
-        <div class="card" style="order:1; display:flex; flex-direction:column; justify-content:space-between;">
-          <div>
-            <h3 style="font-size:16px; font-weight:800;">Diagram Sebaran 8 Akun &amp; Aset</h3>
-            <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">Komposisi dana operasional vs tabungan, emas &amp; investasi</p>
-          </div>
+        <div class="card" style="order:1; display:flex; flex-direction:column; justify-content:space-between; gap:14px;">
+          <h3 style="font-size:16px; font-weight:800;">Diagram Sebaran 8 Akun &amp; Aset</h3>
           <div id="pie-assets-box" class="pie-wrapper"></div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; background:var(--bg-subtle); padding:10px 12px; border-radius:10px; margin-top:12px; font-size:11.5px;" class="tabular">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; background:var(--bg-subtle); padding:10px 12px; border-radius:10px; font-size:11.5px;" class="tabular">
             <div><span style="color:var(--text-muted); display:block;">Operasional &amp; Kas</span><strong id="sum-liquid-4">Rp 0</strong></div>
             <div style="text-align:right;"><span style="color:var(--text-muted); display:block;">Tabungan, Emas &amp; Investasi</span><strong id="sum-savings-3" style="color:#10b981;">Rp 0</strong></div>
           </div>
@@ -1215,10 +1196,7 @@
     <!-- TAB 2: TRACKER HARIAN -->
     <section id="tab-harian" class="hidden" style="display:flex; flex-direction:column; gap:20px;">
       <div class="card" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
-        <div>
-          <h3 style="font-size:16px; font-weight:800;">Tracker &amp; Kalender Pengeluaran Harian</h3>
-          <p style="font-size:12px; color:var(--text-muted);">Klik tanggal pada kalender untuk melihat rincian belanja hari tersebut atau mencatat transaksi baru.</p>
-        </div>
+        <h3 style="font-size:16px; font-weight:800;">Tracker &amp; Kalender Pengeluaran Harian</h3>
         <div class="cal-legend">
           <span class="cal-legend-item cal-tier-hemat"><span>&#9679;</span> Hemat (&le; Rp 50rb)</span>
           <span class="cal-legend-item cal-tier-sedang"><span>&#9650;</span> Sedang (&le; Rp 200rb)</span>
@@ -1269,12 +1247,6 @@
 
     <!-- TAB 3: DOMPET & KREDIT -->
     <section id="tab-akun" class="hidden" style="display:flex; flex-direction:column; gap:20px;">
-      <div class="card" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
-        <div>
-          <h3 style="font-size:16px; font-weight:800;">Dompet &amp; Kredit (8 Akun Utama, Pos Kredit &amp; SPinjam)</h3>
-        </div>
-      </div>
-
       <div id="akun-detail-container" style="display:flex; flex-direction:column; gap:20px;"></div>
     </section>
 
@@ -1324,10 +1296,7 @@
     <!-- TAB 5: LAPORAN AKHIR BULAN -->
     <section id="tab-laporan" class="hidden" style="display:flex; flex-direction:column; gap:20px;">
       <div class="card no-print" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
-        <div>
-          <h3 style="font-size:16px; font-weight:800;">Laporan Keuangan Akhir Bulan</h3>
-          <p style="font-size:12px; color:var(--text-muted);">Rekap otomatis arus kas, evaluasi anggaran, tabungan emas/SeaBank/Bibit, serta posisi Kartu Kredit &amp; SPinjam.</p>
-        </div>
+        <h3 style="font-size:16px; font-weight:800;">Laporan Keuangan Akhir Bulan</h3>
         <div style="display:flex; gap:8px;">
           <button type="button" class="btn btn-ghost" data-action="export-csv">Unduh CSV</button>
           <button type="button" class="btn btn-dark" data-action="print-report">Cetak / Simpan PDF</button>
@@ -1428,10 +1397,7 @@
     <section id="tab-budget" class="hidden" style="display:flex; flex-direction:column; gap:20px;">
       <div class="card" style="display:flex; flex-direction:column; gap:14px;">
         <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
-          <div>
-            <h4 style="font-size:14.5px; font-weight:800;">Ringkasan Pemasukan &amp; Penyesuaian Anggaran (Acuan: Gaji)</h4>
-            <p style="font-size:12px; color:var(--text-muted);">Perhitungan dan penyesuaian target anggaran hanya mengacu pada pemasukan <strong>Gaji</strong>. Pemasukan <strong>Lain-Lain</strong> tetap masuk arus kas &amp; saldo tanpa memengaruhi anggaran.</p>
-          </div>
+          <h4 style="font-size:14.5px; font-weight:800;">Ringkasan Pemasukan &amp; Penyesuaian Anggaran (Acuan: Gaji)</h4>
           <button type="button" class="btn btn-primary btn-sm" data-action="sync-budget-salary">Sesuaikan Anggaran ke Gaji</button>
         </div>
 
@@ -1482,7 +1448,7 @@
           <table>
             <thead>
               <tr>
-                <th>Pos Pengeluaran &amp; Keterangan</th>
+                <th>Pos Pengeluaran</th>
                 <th>Target Budget (Rp)</th>
                 <th style="text-align:right;">Terpakai</th>
                 <th style="text-align:right;">Sisa Pos</th>
@@ -2298,7 +2264,6 @@
         const ccAvail = Math.max(0, ccLimit - ccDebt);
         const ccPct = ccLimit > 0 ? Math.min(100, Math.round((ccDebt / ccLimit) * 100)) : (ccDebt > 0 ? 100 : 0);
         const ccLimitText = formatIDR(ccLimit);
-        document.getElementById('header-cc-limit').textContent = ccLimitText;
         document.getElementById('cc-limit-inline').textContent = ccLimitText;
         document.getElementById('cc-limit-total').textContent = ccLimitText;
 
@@ -2327,9 +2292,6 @@
         document.getElementById('dash-inc-gaji').textContent = formatIDR(bm.gajiIncome);
         document.getElementById('dash-inc-other').textContent = formatIDR(bm.otherIncome);
         document.getElementById('dash-budget-ref').textContent = formatIDR(totalBudgetCap);
-        document.getElementById('dash-budget-subtitle').textContent = bm.hasSalary
-          ? `Acuan Gaji: ${formatIDR(bm.gajiIncome)} (Tabungan ${formatIDR(bm.savingsAlloc)} • Plafon Anggaran ${formatIDR(bm.salaryBudgetCeiling)}). Pemasukan Lain-Lain (${formatIDR(bm.otherIncome)}) hanya masuk arus kas & saldo.`
-          : `Acuan hanya dari pemasukan "Gaji" (belum tercatat bulan ini — memakai target tersimpan ${formatIDR(totalBudgetCap)}). Pemasukan Lain-Lain (${formatIDR(bm.otherIncome)}) tidak memengaruhi anggaran.`;
 
         // Update CC Card
         document.getElementById('cc-pct-label').textContent = `${ccPct}%`;
@@ -2374,10 +2336,7 @@
           return `
             <div class="tabular">
               <div style="display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; margin-bottom:5px; gap:8px;">
-                <div>
-                  <strong>${escapeHtml(cat.name)}</strong>
-                  <span style="font-size:11px; color:var(--text-muted); margin-left:6px;">${escapeHtml(cat.desc)}</span>
-                </div>
+                <strong>${escapeHtml(cat.name)}</strong>
                 <span style="font-weight:700; white-space:nowrap;">${formatIDR(spent)} <span style="color:var(--text-muted); font-weight:400;">/ ${formatIDR(cat.budget)} (${pct}%)</span></span>
               </div>
               <div class="progress-track">
@@ -2770,14 +2729,11 @@
           return `
             <div class="card wallet-card tabular">
               <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
-                <div style="display:flex; align-items:flex-start; gap:10px;">
+                <div style="display:flex; align-items:center; gap:10px;">
                   <span class="wallet-num">${idx + 1}</span>
-                  <div>
-                    <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap;">
-                      <span style="font-size:15px; font-weight:800;">${escapeHtml(a.name)}</span>
-                      ${badge}
-                    </div>
-                    <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">${escapeHtml(a.desc)}</div>
+                  <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap;">
+                    <span style="font-size:15px; font-weight:800;">${escapeHtml(a.name)}</span>
+                    ${badge}
                   </div>
                 </div>
                 <div style="text-align:right;">
@@ -2996,7 +2952,7 @@
             <tr>
               <td>
                 <div style="font-weight:700;">${escapeHtml(cat.name)}</div>
-                <div style="font-size:11px; color:var(--text-muted);">${escapeHtml(cat.desc)}${gajiShare !== null ? ` &bull; <strong>${gajiShare}% dari Gaji</strong>` : ''}</div>
+                ${gajiShare !== null ? `<div style="font-size:11px; color:var(--text-muted); margin-top:2px;"><strong>${gajiShare}% dari Gaji</strong></div>` : ''}
               </td>
               <td>
                 <input type="text" inputmode="numeric" class="budget-edit-input" data-currency="true" data-cat-id="${escapeHtml(cat.id)}" value="${escapeHtml(formatCurrencyInput(cat.budget))}" style="max-width:165px; min-width:135px; font-weight:700;" />
