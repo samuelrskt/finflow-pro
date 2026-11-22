@@ -468,13 +468,25 @@
     @media (min-width: 960px) {
       .grid-3-asym { grid-template-columns: 1.65fr 1fr; }
     }
+    .grid-assets-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 1060px) {
+      .grid-assets-split {
+        grid-template-columns: 1fr 1.45fr;
+        align-items: stretch;
+      }
+    }
     .grid-accounts {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      grid-auto-rows: minmax(56px, 1fr);
+      gap: 12px;
     }
     @media (min-width: 640px) {
-      .grid-accounts { grid-template-columns: repeat(2, 1fr); }
+      .grid-accounts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     /* Special Dark Card (Kartu Kredit BCA) */
@@ -629,6 +641,32 @@
       border: 1px solid var(--border-color);
       background: var(--bg-subtle);
       gap: 10px;
+    }
+    .grid-accounts .acc-item {
+      padding: 15px 18px;
+      min-height: 56px;
+      border-radius: 13px;
+      gap: 14px;
+      transition: border-color 0.15s ease;
+    }
+    .grid-accounts .acc-item:hover {
+      border-color: rgba(16, 185, 129, 0.45);
+    }
+    .grid-accounts .acc-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      min-width: 0;
+    }
+    .grid-accounts .acc-balance {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
+      line-height: 1.35;
     }
 
     /* Calendar Grid */
@@ -1149,13 +1187,13 @@
       </div>
 
       <!-- Asset Allocation Pie + 8 Accounts -->
-      <div class="grid-3-asym">
-        <div class="card" style="order:2;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; gap:10px;">
+      <div class="grid-assets-split">
+        <div class="card" style="order:2; display:flex; flex-direction:column;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:10px;">
             <h3 style="font-size:16px; font-weight:800;">8 Sumber Keuangan &amp; Aset</h3>
             <button type="button" class="btn btn-sm btn-ghost" data-action="switch-tab" data-tab="akun">Detail</button>
           </div>
-          <div id="dash-accounts-grid" class="grid-accounts tabular"></div>
+          <div id="dash-accounts-grid" class="grid-accounts tabular" style="flex:1;"></div>
         </div>
 
         <div class="card" style="order:1; display:flex; flex-direction:column; justify-content:space-between; gap:14px;">
@@ -2355,14 +2393,10 @@
         const assetPieItems = state.accounts.map(a => ({ label: a.name, value: Math.max(0, balances[a.id] || 0) }));
         renderSvgPie('pie-assets-box', assetPieItems, 'Belum ada saldo pada 8 akun untuk menampilkan komposisi aset');
 
-        const groupTag = { ops: 'Operasional', cash: 'Kas / E-Money', savings: 'Tabungan / Emas / Investasi' };
         document.getElementById('dash-accounts-grid').innerHTML = state.accounts.map(acc => `
           <div class="acc-item">
-            <div>
-              <div style="font-size:13px; font-weight:800;">${escapeHtml(acc.name)}</div>
-              <div style="font-size:11px; color:var(--text-muted);">${groupTag[acc.group] || 'Akun'}</div>
-            </div>
-            <div style="font-size:13.5px; font-weight:800;">${formatIDR(balances[acc.id] || 0)}</div>
+            <span class="acc-name">${escapeHtml(acc.name)}</span>
+            <span class="acc-balance">${formatIDR(balances[acc.id] || 0)}</span>
           </div>
         `).join('');
 
@@ -2888,16 +2922,12 @@
         const assetPieItems = state.accounts.map(a => ({ label: a.name, value: Math.max(0, balances[a.id] || 0) }));
         renderSvgPie('pie-assets-box', assetPieItems, 'Belum ada saldo pada 8 akun untuk menampilkan komposisi aset');
 
-        const groupTag = { ops: 'Operasional', cash: 'Kas / E-Money', savings: 'Tabungan / Emas / Investasi' };
         const dashGrid = document.getElementById('dash-accounts-grid');
         if (dashGrid) {
           dashGrid.innerHTML = state.accounts.map(acc => `
             <div class="acc-item">
-              <div>
-                <div style="font-size:13px; font-weight:800;">${escapeHtml(acc.name)}</div>
-                <div style="font-size:11px; color:var(--text-muted);">${groupTag[acc.group] || 'Akun'}</div>
-              </div>
-              <div style="font-size:13.5px; font-weight:800;">${formatIDR(balances[acc.id] || 0)}</div>
+              <span class="acc-name">${escapeHtml(acc.name)}</span>
+              <span class="acc-balance">${formatIDR(balances[acc.id] || 0)}</span>
             </div>
           `).join('');
         }
