@@ -8,6 +8,8 @@
   <meta property="og:title" content="FinFlow Pro" />
   <meta property="og:description" content="Catatan Keuangan Pribadi, 8 Dompet & Aset, Kartu Kredit BCA, dan Cicilan SPinjam." />
   <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
   <style>
     :root {
       --bg-app: #f1f5f9;
@@ -99,13 +101,12 @@
       width: 38px;
       height: 38px;
       border-radius: 11px;
-      background: linear-gradient(135deg, #34d399, #0d9488);
-      color: #022c22;
+      background: #ffffff;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      box-shadow: 0 6px 14px rgba(16, 185, 129, 0.25);
+      flex-shrink: 0;
     }
     .brand-title { color: #ffffff; font-size: 16px; font-weight: 800; letter-spacing: -0.01em; }
     .brand-sub { color: #94a3b8; font-size: 11px; }
@@ -1037,8 +1038,13 @@
     <div>
       <div class="brand">
         <div class="brand-left">
-          <div class="brand-logo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          <div class="brand-logo" aria-label="FinFlow Pro">
+            <svg width="38" height="38" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FinFlow Pro" style="display:block;">
+              <rect width="64" height="64" rx="16" fill="#FFFFFF" />
+              <path d="M15 32H23V49H15Z" fill="#0F172A" />
+              <path d="M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z" fill="#0F172A" />
+              <path d="M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z" fill="#10B981" />
+            </svg>
           </div>
           <div>
             <div class="brand-title">FinFlow Pro</div>
