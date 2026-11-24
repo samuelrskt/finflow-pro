@@ -8,8 +8,62 @@
   <meta property="og:title" content="FinFlow Pro" />
   <meta property="og:description" content="Catatan Keuangan Pribadi, 8 Dompet & Aset, Kartu Kredit BCA, dan Cicilan SPinjam." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="FinFlow Pro" />
+  <link id="app-favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
+  <link id="app-apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FFFFFF'/%3E%3Cpath d='M15 32H23V49H15Z' fill='%230F172A'/%3E%3Cpath d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='%230F172A'/%3E%3Cpath d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='%2310B981'/%3E%3C/svg%3E" />
+  <script>
+    (function() {
+      function applyPngAppIcons(pngDataUrl) {
+        if (!pngDataUrl) return;
+        var appleLink = document.querySelector('link[rel="apple-touch-icon"]') || document.getElementById('app-apple-touch-icon');
+        if (appleLink) {
+          appleLink.setAttribute('href', pngDataUrl);
+          appleLink.setAttribute('sizes', '180x180');
+        }
+        var iconLink = document.querySelector('link[rel="icon"]') || document.getElementById('app-favicon');
+        if (iconLink) {
+          iconLink.setAttribute('type', 'image/png');
+          iconLink.setAttribute('href', pngDataUrl);
+        }
+      }
+
+      function generateCanvasIcon() {
+        var size = 180;
+        var canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        var logoSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 64 64'>" +
+          "<rect width='64' height='64' fill='#FFFFFF'/>" +
+          "<path d='M15 32H23V49H15Z' fill='#0F172A'/>" +
+          "<path d='M27 23.5H35V40C35 45.5 31.5 48.5 27 49Z' fill='#0F172A'/>" +
+          "<path d='M41 15H49V36C49 44.5 43.5 49 35.5 49H33C37.5 47 41 42.5 41 36Z' fill='#10B981'/>" +
+          "</svg>";
+
+        var img = new Image();
+        img.onload = function() {
+          try {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, size, size);
+            ctx.drawImage(img, 0, 0, size, size);
+            applyPngAppIcons(canvas.toDataURL('image/png'));
+          } catch (e) {}
+        };
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(logoSvg);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', generateCanvasIcon);
+      } else {
+        generateCanvasIcon();
+      }
+    })();
+  </script>
   <style>
     :root {
       --bg-app: #f1f5f9;
